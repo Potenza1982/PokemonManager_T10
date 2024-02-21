@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Los Pokemons que tenemos en el array: </h2>
+  <hr />
+  <div class="columns">
+    <div class="column">
+      <p> {{cuenta}} Pokémons en el array</p>
+    </div>
+  </div>
+
+  <form>
+    <div class="field has-addons">
+      <div class="control has-icons-left">
+        <input class="input is-small" name="pokemonBusca" type="test" placeholder="Nombre del pokemon"
+          [(ngModel)]="formBuscarPokemon.nombre" (keyup)="buscar(formBuscarPokemon.nombre)">
+      </div>
+      <div class="control">
+        <a class="button is-primary is-small" (click)="buscar(formBuscarPokemon.nombre)">
+          Buscar
+        </a>
+      </div>
+      <div class="control">
+        <a class="button is-light is-small" (click)="cancelarBuscar()">
+          Cancelar </a>
+      </div>
+    </div>
+    <!-- Mensaje para mostrar cuando no se encuentren Pokémon -->
+    <p *ngIf="!pokemonEncontrado" class="notification">
+      Ningún Pokémon encontrado
+    </p>
+  </form>
+
+  <div class="columns is-multiline">
+    <ul class="menu-list column is-one-third" *ngFor="let pokemon of pokemons">
+      <li>
+        <ul class="menu-list">
+          <!-- Imagen del Pokémon -->
+          <img src="{{pokemon.img}}" />
+
+          <!-- Nombre del Pokémon en negrita -->
+          <li>Nombre:<strong>{{pokemon.nombre}}</strong></li>
+
+          <!-- Categoría del Pokémon, mostrando N/A si no está disponible -->
+          <li>Categoría: <span *ngIf="pokemon.categoria; else na">{{pokemon.categoria}}</span></li>
+
+          <!-- Tipo del Pokémon, mostrando N/A si no está disponible -->
+          <li>Tipo: <span *ngIf="pokemon.tipo; else na">{{pokemon.tipo}}</span></li>
+
+          <!-- Talla del Pokémon, mostrando N/A si no está disponible y formateando el número -->
+          <li>Talla: <span *ngIf="pokemon.talla; else na">{{pokemon.talla | number:'1.0-2' : 'es'}} m</span></li>
+
+          <!-- Peso del Pokémon, mostrando N/A si no está disponible y formateando el número -->
+          <li>Peso: <span *ngIf="pokemon.peso; else na">{{pokemon.peso | number:'1.0-2' : 'es'}} Kg</span></li>
+
+          <!-- Plantilla para mostrar N/A cuando la información no está disponible -->
+          <ng-template #na>N/A</ng-template>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

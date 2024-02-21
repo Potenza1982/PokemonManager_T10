@@ -1,0 +1,13 @@
+<p>Hola desde el componente de generaciones.</p>
+
+<div class="container m-auto text-center bg-warning py-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="display-4 text-center mb-4 font-weight-bold">Generaciones de Pokemon</h1>
+            <p class="text-light bg-black py-5">Listado de todas las generaciones:</p>
+            <ul class="list-group">
+                <li *ngFor="let generacion of generaciones" class="list-group-item">{{ generacion }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

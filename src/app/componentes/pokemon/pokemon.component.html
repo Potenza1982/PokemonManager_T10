@@ -1,0 +1,24 @@
+<!-- En el archivo pokemon.component.html -->
+<ul class="menu-list">
+    <!-- Imagen del Pokémon -->
+    <img src="{{pokemon.img}}" />
+    
+    <!-- Nombre del Pokémon en negrita -->
+    <li>Nombre:<strong>{{pokemon.nombre}}</strong></li>
+  
+    <!-- Categoría del Pokémon, mostrando N/A si no está disponible -->
+    <li>Categoría: <span *ngIf="pokemon.categoria; else na">{{pokemon.categoria}}</span></li>
+  
+    <!-- Tipo del Pokémon, mostrando N/A si no está disponible -->
+    <li>Tipo: <span *ngIf="pokemon.tipo; else na">{{pokemon.tipo}}</span></li>
+  
+    <!-- Talla del Pokémon, mostrando N/A si no está disponible y formateando el número -->
+    <li>Talla: <span *ngIf="pokemon.talla; else na">{{pokemon.talla | number:'1.0-2' : 'es'}} m</span></li>
+  
+    <!-- Peso del Pokémon, mostrando N/A si no está disponible y formateando el número -->
+    <li>Peso: <span *ngIf="pokemon.peso; else na">{{pokemon.peso | number:'1.0-2' : 'es'}} Kg</span></li>
+  
+    <!-- Plantilla para mostrar N/A cuando la información no está disponible -->
+    <ng-template #na>N/A</ng-template>
+  </ul>
+  
